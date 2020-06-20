@@ -7,6 +7,12 @@ Similar tools are macdylibbundler which ich written in C++ or the Qt Tool Macdep
 
 https://github.com/auriamg/macdylibbundler
 
+The advantage of this script is, it only requires bash and of course otool and install_name_tool, so very simple for my taste.
+
+## How it works
+
+The executalbe passed to the script will be parsed for dependent dylibs. Those dependent dylibs will also be parsed for more dependant dylibs (recursively) creating a list of all the dependencies. In that process a list of libraries is collected, copied to your bundle directory into CGenius.app/Contents/libs and then modified using install_name_tool so the search path becomes relative and is bundle compatible.
+
 ## How to use it
 
 The to be modified dylibs are usually taken from MacPorts. Since those use well defined search path and need to be modified, because you don't want users be forced installing mac ports in order to use your software, these dylibs are very good candidates.
